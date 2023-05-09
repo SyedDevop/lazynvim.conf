@@ -24,4 +24,4 @@ map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
 
 -- Toggle terminal
--- map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
+map({ "n", "i", "v", "t" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
