@@ -19,9 +19,16 @@ map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
 vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
 map("n", "<C-c>", "yy", { desc = "Copy" })
 map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
+-- Past keymap
+map("i", "<C-v>", "<Esc>pi", { desc = "Past" })
+map("n", "<C-v>", "p", { desc = "Past" })
 
 -- Toggle UndoTree
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
-
 -- Toggle terminal
-map({ "n", "i", "v", "t" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
+map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
+
+-- map("n", "<leader>fg", function()
+--   local dicraty = vim.fn.input("directory (c,d): ")
+--   vim.cmd(":Telescope file_browser path=" .. dicraty.upper(dicraty) .. ':"')
+-- end, { desc = "Open Gui File Finder" })
