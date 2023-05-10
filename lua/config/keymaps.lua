@@ -2,6 +2,8 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymps here
 
+local myUtil = require("config.driveLetter")
+
 local function map(mode, lhs, rhs, opts)
   local keys = require("lazy.core.handler").handlers.keys
   ---@cast keys LazyKeysHandler
@@ -20,7 +22,7 @@ vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
 map("n", "<C-c>", "yy", { desc = "Copy" })
 map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
 -- Past keymap
-map("i", "<C-v>", "<Esc>pi", { desc = "Past" })
+map("i", "<C-v>", "<Esc> pi", { desc = "Past" })
 map("n", "<C-v>", "p", { desc = "Past" })
 
 -- Toggle UndoTree
@@ -28,7 +30,10 @@ map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoT
 -- Toggle terminal
 map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
 
--- map("n", "<leader>fg", function()
---   local dicraty = vim.fn.input("directory (c,d): ")
---   vim.cmd(":Telescope file_browser path=" .. dicraty.upper(dicraty) .. ':"')
--- end, { desc = "Open Gui File Finder" })
+map("n", "<leader>fg", function()
+  -- local drive = myUtil.selectOption(myUtil.driveLetter()) or nil
+  -- vim.cmd(":Telescope file_browser path=d:/")
+
+  local a = vim.cmd(":browse edit")
+  print(a)
+end, { desc = "Open Gui File Finder" })
