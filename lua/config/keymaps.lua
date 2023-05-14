@@ -20,18 +20,21 @@ vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
 map("n", "<C-c>", "yy", { desc = "Copy" })
 map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
 -- Past keymap
-map("i", "<C-v>", "<Esc> pi", { desc = "Past" })
-map("n", "<C-v>", "p", { desc = "Past" })
+map("i", "<C-v>", '<Esc> "+P i', { desc = "Past" })
+map("n", "<C-v>", '"+p', { desc = "Past" })
+map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
 
 -- Toggle UndoTree
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
 -- Toggle terminal
 map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
 
-map("n", "<leader>fg", function()
-  -- local drive = myUtil.selectOption(myUtil.driveLetter()) or nil
-  -- vim.cmd(":Telescope file_browser path=d:/")
+-- Open file folders
+map("n", "<leader>oo", function()
+  vim.fn.system("gopa folder -- nvim-qt .")
+end, { desc = "Open Folder in new instance" })
 
-  local a = vim.cmd(":browse edit")
-  print(a)
-end, { desc = "Open Gui File Finder" })
+map("n", "<leader>of", function()
+  vim.fn.system("gopa file -- nvim-qt")
+  vim.cmd("cd %:p:h\ne")
+end, { desc = "Open File in new instance" })

@@ -123,7 +123,7 @@ return {
         show_buffer_close_icons = true,
         show_close_icon = true,
         show_tab_indicators = true,
-        separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
+        separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
         color_icons = true,
         diagnostics = false,
         highlights = {
@@ -145,6 +145,16 @@ return {
             text_align = "left",
           },
         },
+      },
+    },
+  },
+
+  --which-key
+  {
+    "folke/which-key.nvim",
+    opts = {
+      defaults = {
+        ["<leader>o"] = { name = "+Open" },
       },
     },
   },
