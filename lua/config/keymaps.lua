@@ -23,6 +23,7 @@ map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
 map("i", "<C-v>", '<Esc> "+P i', { desc = "Past" })
 map("n", "<C-v>", '"+p', { desc = "Past" })
 map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
+map("x", "<C-v>", '"_dp', { desc = "Past" })
 
 -- Toggle UndoTree
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
