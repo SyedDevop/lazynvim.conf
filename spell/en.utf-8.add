@@ -11,3 +11,5 @@ cmd
 cr
 Gui
 nvim
+pyright
+flake8
