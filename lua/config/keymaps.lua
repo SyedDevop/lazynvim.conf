@@ -41,16 +41,19 @@ map("n", "<leader>of", function()
 end, { desc = "Open File in new instance" })
 
 map("n", "<leader>os", function()
-  if vim.cmd.buffers() then
-    print("No buffers")
-    return
+  local output = vim.fn.systemlist("gopa file -o ")
+  if vim.v.shell_error == 1 then
+    print(output)
+  else
+    local cmdArgs = "e " .. output[1]
+    vim.cmd(cmdArgs)
   end
-  local path = vim.fn.system("gopa file -o")
-  local cmdArgs = "e " .. path
-  vim.cmd(cmdArgs)
 end, { desc = "Open File in same buffer" })
 
 map("n", "<leader>od", function()
   vim.fn.system("gopa folder -- nvim-qt .")
   vim.cmd("xall")
 end, { desc = "Open new Folder and close current instance" })
+
+-- Python
+map("n", "<leader>ce", '<cmd>lua require("swenv.api").pick_venv() <cr>', { desc = "Choose Python Env" })
