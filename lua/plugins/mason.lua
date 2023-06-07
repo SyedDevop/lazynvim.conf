@@ -2,7 +2,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      servers = { eslint = {}, pyright = {}, sourcery = {} },
+      servers = { eslint = {}, pyright = {} },
       setup = {
         eslint = function()
           require("lazyvim.util").on_attach(function(client)
