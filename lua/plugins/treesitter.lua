@@ -11,6 +11,7 @@ return {
       "scss",
       "tsx",
       "typescript",
+      "gitignore",
       "rust", -- for rust
       "toml", -- for rust
       "ron", -- for rust
