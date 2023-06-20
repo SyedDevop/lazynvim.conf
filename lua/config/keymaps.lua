@@ -20,10 +20,17 @@ vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
 map("n", "<C-c>", "yy", { desc = "Copy" })
 map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
 -- Past keymap
-map("i", "<C-v>", '<Esc> "+P i', { desc = "Past" })
+map("i", "<C-v>", '<Esc> "+p i', { desc = "Past" })
 map("n", "<C-v>", '"+p', { desc = "Past" })
 map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
-map("x", "<C-v>", '"_dp', { desc = "Past" })
+map("x", "<C-v>", '"\\"_dp', { desc = "Past" })
+
+-- Select the hole page.
+map("n", "<C-a>", function()
+  vim.g.minianimate_disable = true
+  vim.cmd("normal! gg0vG$")
+  vim.g.minianimate_disable = false
+end, { desc = "Visually select all" })
 
 -- Toggle UndoTree
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
