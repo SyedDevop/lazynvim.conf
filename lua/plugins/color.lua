@@ -22,14 +22,20 @@ return {
   --   },
   -- },
 
-  "navarasu/onedark.nvim",
-  lay = true,
+  -- "navarasu/onedark.nvim",
+  -- lay = true,
+  --
+  -- opts = function()
+  --   require("onedark").setup({
+  --     style = "deep",
+  --     term_colors = false,
+  --     toggle_style_key = "<leader>uq",
+  --   })
+  --   require("onedark").load()
+  -- end,
+  --
 
-  opts = function()
-    require("onedark").setup({
-      style = "deep",
-      toggle_style_key = "<leader>uq",
-    })
-    require("onedark").load()
-  end,
+  "folke/tokyonight.nvim",
+  lazy = true,
+  opts = { style = "night", terminal_colors = false },
 }

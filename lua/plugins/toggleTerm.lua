@@ -3,6 +3,7 @@ return {
   cmd = { "ToggleTerm", "TermExec" },
   version = "*",
   opts = {
+    shell = "pwsh.exe",
     size = 10,
     open_mapping = [[<F7>]],
     shading_factor = 2,
