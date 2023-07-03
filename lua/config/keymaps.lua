@@ -12,6 +12,14 @@ local function map(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 end
+
+-- Nave KeyMaps
+map("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in center" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in center" })
+
+map("n", "n", "nzzzv", { desc = "Keep cursor in center" })
+map("n", "N", "Nzzzv", { desc = "Keep cursor in center" })
+
 -- Undo Redo Keymaps.
 map({ "n", "i", "v" }, "<C-z>", "<cmd>:u<cr>", { desc = "Undo" })
 map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
