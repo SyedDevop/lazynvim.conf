@@ -98,14 +98,6 @@ return {
     end,
   },
 
-  -- add zen-mode
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    config = true,
-    keys = { { "<leader>Z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-  },
-
   {
     "akinsho/bufferline.nvim",
     opts = {
