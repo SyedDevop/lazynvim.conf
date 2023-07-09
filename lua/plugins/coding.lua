@@ -24,7 +24,7 @@ return {
         "<leader>gi",
         function()
           local gitignore = require("gitignore")
-          gitignore.generate()
+          gitignore.generate("")
         end,
         desc = "generate GitIgnore file",
       },
