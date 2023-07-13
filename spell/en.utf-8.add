@@ -13,3 +13,6 @@ Gui
 nvim
 pyright
 flake8
+LSP
+Dap
+lang
