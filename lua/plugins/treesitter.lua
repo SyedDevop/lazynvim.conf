@@ -16,5 +16,6 @@ return {
       "toml", -- for rust
       "ron", -- for rust
     })
+    opts.indent = { enable = true, disable = { "dart" } }
   end,
 }
