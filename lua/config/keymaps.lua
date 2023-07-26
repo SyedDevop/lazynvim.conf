@@ -45,10 +45,6 @@ map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoT
 -- Toggle terminal
 map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
 
--- Change Buffers
-map("n", "<tab>", "<Cmd>BufferLineCycleNext<Cr>", { desc = "Go to next buffer" })
-map("n", "<S-tab>", "<Cmd>BufferLineCyclePrev<Cr>", { desc = "Go to previews buffer" })
-
 -- Open file folders
 map("n", "<leader>oo", function()
   vim.fn.system("gopa folder -- nvim-qt .")
