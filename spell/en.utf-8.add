@@ -16,3 +16,7 @@ flake8
 LSP
 Dap
 lang
+json
+localhost
+const
+useState
