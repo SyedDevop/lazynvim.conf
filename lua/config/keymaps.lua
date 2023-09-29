@@ -25,13 +25,14 @@ map({ "n", "i", "v" }, "<C-z>", "<cmd>:u<cr>", { desc = "Undo" })
 map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
 -- Copy Past Keymaps
 vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
-map("n", "<C-c>", "yy", { desc = "Copy" })
-map("i", "<C-c>", "<Esc> yy i", { desc = "Copy" })
+map("n", "<C-c>", '\"+y', { desc = "Copy" })
+map("v", "<C-c>", '\"+y', { desc = "Copy" })
+map("i", "<C-c>", '<Esc> \"+y  i', { desc = "Copy" })
 -- Past keymap
-map("i", "<C-v>", "<Esc> P i", { desc = "Past" })
-map("n", "<C-v>", '"+p', { desc = "Past" })
+map("i", "<C-v>", "<Esc> p i", { desc = "Past" })
+map("n", "<C-v>", 'p', { desc = "Past" })
 map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
-map("x", "<C-v>", '"\\"_dp', { desc = "Past" })
+map("x", "<C-v>", '\"_dp', { desc = "Past" })
 
 -- Select the hole page.
 map("n", "<C-a>", function()
