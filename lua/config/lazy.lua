@@ -19,9 +19,16 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.go" },
 
+    -- Code complete plugin
+    -- { import = "lazyvim.plugins.extras.coding.codeium" },
+
+    -- Util plugin
+    { import = "lazyvim.plugins.extras.util.project" },
+
     -- Dap plugins
     { import = "lazyvim.plugins.extras.dap.core" },
 
+    -- Lint/Style plugin
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
 
