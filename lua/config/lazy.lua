@@ -20,7 +20,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.go" },
 
     -- Code complete plugin
-    -- { import = "lazyvim.plugins.extras.coding.codeium" },
+    { import = "lazyvim.plugins.extras.coding.codeium" },
 
     -- Util plugin
     { import = "lazyvim.plugins.extras.util.project" },
