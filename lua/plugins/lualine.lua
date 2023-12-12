@@ -14,7 +14,9 @@ return {
       local buf_client_names = {}
 
       for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" then
+        if client.name == "emmet_language_server" then
+          table.insert(buf_client_names, "emmet-ls")
+        else
           table.insert(buf_client_names, client.name)
         end
       end
