@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -22,24 +22,15 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function(_, opts)
-      local lspconfig = require("lspconfig")
-      lspconfig.intelephense.setup({
-        cmd = { "intelephense", "--stdio" },
-        filetypes = { "php" },
-        root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
-      })
-
-      local platform = vim.loop.os_uname().sysname
-      if platform ~= "Windows_NT" then
-        lspconfig.phpactor.setup({
-          cmd = { "phpactor", "language-server" },
+    opts = {
+      servers = {
+        intelephense = {
+          cmd = { "intelephense", "--stdio" },
           filetypes = { "php" },
           root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
-        })
-      end
-    end,
-    -- end,
+        },
+      },
+    },
   },
   {
     "stevearc/conform.nvim",
@@ -61,3 +52,23 @@ return {
     end,
   },
 }
+
+local platform = vim.loop.os_uname().sysname
+if platform ~= "Windows_NT" then
+  vim.list_extend(M, {
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          phpactor = {
+            cmd = { "phpactor", "language-server" },
+            filetypes = { "php" },
+            root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
+          },
+        },
+      },
+    },
+  })
+end
+
+return M
