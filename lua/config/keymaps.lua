@@ -50,30 +50,30 @@ map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle termin
 map("n", "<tab>", "<Cmd>BufferLineCycleNext<Cr>", { desc = "Go to next buffer" })
 map("n", "<S-tab>", "<Cmd>BufferLineCyclePrev<Cr>", { desc = "Go to previews buffer" })
 
--- Open file folders
-map("n", "<leader>oo", function()
-  vim.fn.system("gopa folder -- nvim-qt .")
-end, { desc = "Open Folder in new instance" })
+local platform = vim.loop.os_uname().sysname
+if platform == "Windows_NT" then
+  -- Open file folders
+  map("n", "<leader>oo", function()
+    vim.fn.system("gopa folder -- nvim-qt .")
+  end, { desc = "Open Folder in new instance" })
 
-map("n", "<leader>of", function()
-  vim.fn.system("gopa file -- nvim-qt")
-  vim.cmd("cd %:p:h\ne")
-end, { desc = "Open File in new instance" })
+  map("n", "<leader>of", function()
+    vim.fn.system("gopa file -- nvim-qt")
+    vim.cmd("cd %:p:h\ne")
+  end, { desc = "Open File in new instance" })
 
-map("n", "<leader>os", function()
-  local output = vim.fn.systemlist("gopa file -o ")
-  if vim.v.shell_error == 1 then
-    print(output)
-  else
-    local cmdArgs = "e " .. output[1]
-    vim.cmd(cmdArgs)
-  end
-end, { desc = "Open File in same buffer" })
+  map("n", "<leader>os", function()
+    local output = vim.fn.systemlist("gopa file -o ")
+    if vim.v.shell_error == 1 then
+      print(output)
+    else
+      local cmdArgs = "e " .. output[1]
+      vim.cmd(cmdArgs)
+    end
+  end, { desc = "Open File in same buffer" })
 
-map("n", "<leader>od", function()
-  vim.fn.system("gopa folder -- nvim-qt .")
-  vim.cmd("xall")
-end, { desc = "Open new Folder and close current instance" })
-
--- Python
-map("n", "<leader>ce", '<cmd>lua require("swenv.api").pick_venv() <cr>', { desc = "Choose Python Env" })
+  map("n", "<leader>od", function()
+    vim.fn.system("gopa folder -- nvim-qt .")
+    vim.cmd("xall")
+  end, { desc = "Open new Folder and close current instance" })
+end
