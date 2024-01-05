@@ -4,6 +4,18 @@ return {
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
     local cmp = require("cmp")
+    opts.window = {
+      completion = {
+        border = "rounded",
+        winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+        zindex = 1001,
+        scrolloff = 0,
+        col_offset = 0,
+        side_padding = 1,
+        scrollbar = false,
+      },
+      -- documentation = cmp.config.window.bordered(),
+    }
     opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
       { name = "crates", priority = 750 },
       {
