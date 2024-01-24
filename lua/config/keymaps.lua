@@ -13,6 +13,8 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+map("n", "<leader>e", vim.cmd.Ex, { desc = "Open Nvim Explorer(netrw)" })
+
 -- Nave KeyMaps
 map("n", "<C-d>", "<C-d>zz", { desc = "Keep cursor in center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in center" })
@@ -24,15 +26,16 @@ map("n", "N", "Nzzzv", { desc = "Keep cursor in center" })
 map({ "n", "i", "v" }, "<C-z>", "<cmd>:u<cr>", { desc = "Undo" })
 map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
 -- Copy Past Keymaps
-vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
-map("n", "<C-c>", '\"+y', { desc = "Copy" })
-map("v", "<C-c>", '\"+y', { desc = "Copy" })
-map("i", "<C-c>", '<Esc> \"+y  i', { desc = "Copy" })
+-- vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
+map({ "n", "v" }, "<C-c>", [["+y]], { desc = "Copy", silent = true })
+map("n", "<leader>Y", [["+Y]], { desc = "Copy", silent = true })
+-- map("v", "<C-c>", '"+y', { desc = "Copy" })
+-- map("i", "<C-c>", '<Esc> \"+y  i', { desc = "Copy" })
 -- Past keymap
-map("i", "<C-v>", "<Esc> p i", { desc = "Past" })
-map("n", "<C-v>", 'p', { desc = "Past" })
-map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
-map("x", "<C-v>", '\"_dp', { desc = "Past" })
+-- map("i", "<C-v>", "<Esc> p i", { desc = "Past" })
+-- map("n", "<C-v>", "p", { desc = "Past" })
+-- map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
+map("x", "<leader>p", [["_dp]], { desc = "Past", silent = true })
 
 -- Select the hole page.
 -- map("n", "<C-a>", function()
