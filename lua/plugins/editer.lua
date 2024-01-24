@@ -35,7 +35,10 @@ return {
       },
     },
   },
-
+  {
+    "j-hui/fidget.nvim",
+    opts = {},
+  },
   --Disable mini.ai to tags
   {
     "echasnovski/mini.ai",
