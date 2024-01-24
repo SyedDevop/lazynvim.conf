@@ -35,11 +35,11 @@ map("c", "<C-v>", "<c-r>+", { desc = "Past", silent = true })
 map("x", "<C-v>", '\"_dp', { desc = "Past" })
 
 -- Select the hole page.
-map("n", "<C-a>", function()
-  vim.g.minianimate_disable = true
-  vim.cmd("normal! gg0vG$")
-  vim.g.minianimate_disable = false
-end, { desc = "Visually select all" })
+-- map("n", "<C-a>", function()
+--   vim.g.minianimate_disable = true
+--   vim.cmd("normal! gg0vG$")
+--   vim.g.minianimate_disable = false
+-- end, { desc = "Visually select all" })
 
 -- Toggle UndoTree
 map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoTree" })
