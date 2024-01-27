@@ -49,6 +49,8 @@ map({ "n", "v" }, "<leader>z", "<cmd>UndotreeToggle<cr>", { desc = "Toggle UndoT
 -- Toggle terminal
 map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle terminal" })
 
+map("n", "<leader>xm", "<Cmd>Mess<CR>", { desc = "Show the messages" })
+
 -- Change Buffers
 map("n", "<tab>", "<Cmd>BufferLineCycleNext<Cr>", { desc = "Go to next buffer" })
 map("n", "<S-tab>", "<Cmd>BufferLineCyclePrev<Cr>", { desc = "Go to previews buffer" })
