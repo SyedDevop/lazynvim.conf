@@ -40,5 +40,13 @@ return {
         end,
       },
     })
+
+    opts.winbar = {
+      lualine_c = { { "filename", path = 4 } },
+    }
+
+    opts.inactive_winbar = {
+      lualine_c = { { "filename", path = 4 } },
+    }
   end,
 }

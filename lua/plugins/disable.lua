@@ -4,4 +4,5 @@ return {
   { "folke/noice.nvim", enabled = false },
   { "catppuccin/nvim", enabled = false },
   { "ellisonleao/gruvbox.nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = false },
 }

@@ -52,8 +52,8 @@ map({ "n", "i", "v" }, "<C-/>", "<cmd>:ToggleTerm<cr> ", { desc = "Toggle termin
 map("n", "<leader>xm", "<Cmd>Mess<CR>", { desc = "Show the messages" })
 
 -- Change Buffers
-map("n", "<tab>", "<Cmd>BufferLineCycleNext<Cr>", { desc = "Go to next buffer" })
-map("n", "<S-tab>", "<Cmd>BufferLineCyclePrev<Cr>", { desc = "Go to previews buffer" })
+map("n", "<tab>", "<Cmd>bnext<Cr>", { desc = "Go to next buffer" })
+map("n", "<S-tab>", "<Cmd>bprev<Cr>", { desc = "Go to previews buffer" })
 
 local platform = vim.loop.os_uname().sysname
 if platform == "Windows_NT" then
