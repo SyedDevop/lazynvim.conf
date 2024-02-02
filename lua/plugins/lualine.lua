@@ -23,7 +23,11 @@ return {
 
       return table.concat(buf_client_names, ", ")
     end
-
+    opts.options = {
+      theme = "auto",
+      globalstatus = true,
+      disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" }, winbar = { "dashboard" } },
+    }
     opts.sections = vim.tbl_deep_extend("force", opts.sections, {
       lualine_y = {
         {
