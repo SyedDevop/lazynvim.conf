@@ -4,4 +4,8 @@ return {
     cmd = { "Mess", "MessShow" },
     opts = {},
   },
+  {
+    dir = "~/nvim-proj/netrw.nvim/",
+    opts = true,
+  },
 }
