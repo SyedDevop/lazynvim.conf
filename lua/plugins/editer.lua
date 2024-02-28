@@ -35,10 +35,20 @@ return {
       },
     },
   },
+  --Fidget-nvim
   {
     "j-hui/fidget.nvim",
     opts = {},
   },
+  --Flit
+  {
+    "ggandor/flit.nvim",
+    dependencies = { "tpope/vim-repeat", "ggandor/leap.nvim" },
+    config = function()
+      require("flit").setup({})
+    end,
+  },
+
   --mini.Surround
   {
     "echasnovski/mini.surround",
