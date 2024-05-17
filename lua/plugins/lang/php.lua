@@ -42,15 +42,15 @@ local M = {
       },
     },
   },
-  {
-    "nvimtools/none-ls.nvim",
-    optional = true,
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.pint)
-    end,
-  },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   optional = true,
+  --   opts = function(_, opts)
+  --     local nls = require("null-ls")
+  --     opts.sources = opts.sources or {}
+  --     table.insert(opts.sources, nls.builtins.formatting.pint)
+  --   end,
+  -- },
 }
 
 local platform = vim.loop.os_uname().sysname
@@ -71,4 +71,7 @@ if platform ~= "Windows_NT" then
   })
 end
 
-return M
+-- Wright Now php is disabled.
+-- Uncomment the last line to use php
+-- require M
+return {}
