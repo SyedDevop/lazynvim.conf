@@ -5,7 +5,12 @@ return {
     event = "VeryLazy",
     config = true,
   },
-
+  {
+    "nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+    },
+  },
   -- tidy
   {
     "mcauley-penney/tidy.nvim",
@@ -24,7 +29,7 @@ return {
         "<leader>gi",
         function()
           local gitignore = require("gitignore")
-          gitignore.generate("")
+          gitignore.generate({})
         end,
         desc = "generate GitIgnore file",
       },
