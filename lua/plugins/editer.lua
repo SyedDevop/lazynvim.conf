@@ -45,15 +45,6 @@ return {
     config = true,
   },
 
-  --which-key
-  {
-    "folke/which-key.nvim",
-    opts = {
-      defaults = {
-        ["<leader>o"] = { name = "+Open" },
-      },
-    },
-  },
   --Fidget-nvim
   {
     "j-hui/fidget.nvim",
