@@ -3,5 +3,5 @@
 -- Add any additional options here asdasd
 
 local opt = vim.opt
-
+vim.g.lazyvim_php_lsp = "intelephense"
 opt.spell = true

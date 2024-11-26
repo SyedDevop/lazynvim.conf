@@ -74,4 +74,19 @@ end
 -- Wright Now php is disabled.
 -- Uncomment the last line to use php
 -- require M
-return {}
+--
+-- require("lspconfig").phpcs.setup({
+--   cmd = { "phpcs", "--standard=PEAR", "--exclude=PEAR.Commenting.FileComment.Missing" },
+-- })
+local phpcs = require("lint").linters.phpcs
+phpcs.args = {
+  "-q",
+  "-s",
+  "--standard=PEAR",
+  "--exclude=PEAR.Commenting.FileComment",
+  "--report=json",
+  "-",
+}
+return {
+  { "prettier/vim-prettier" },
+}
