@@ -1,94 +1,27 @@
-local M = {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "php",
-      })
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = function(_, opts)
-      local platform = vim.loop.os_uname().sysname
-      if platform ~= "Windows_NT" then
-        vim.list_extend(opts.ensure_installed, { "phpactor" })
-      end
-      vim.list_extend(opts.ensure_installed, {
-        "pint",
-        "intelephense",
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        intelephense = {
-          cmd = { "intelephense", "--stdio" },
-          filetypes = { "php" },
-          root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
-        },
-      },
-    },
-  },
-  {
-    "stevearc/conform.nvim",
-    optional = true,
-    opts = {
-      ---@type table<string, conform.FiletypeFormatter>
-      formatters_by_ft = {
-        ["php"] = { "pint" },
-      },
-    },
-  },
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   optional = true,
-  --   opts = function(_, opts)
-  --     local nls = require("null-ls")
-  --     opts.sources = opts.sources or {}
-  --     table.insert(opts.sources, nls.builtins.formatting.pint)
-  --   end,
-  -- },
-}
-
-local platform = vim.loop.os_uname().sysname
-if platform ~= "Windows_NT" then
-  vim.list_extend(M, {
-    {
-      "neovim/nvim-lspconfig",
-      opts = {
-        servers = {
-          phpactor = {
-            cmd = { "phpactor", "language-server" },
-            filetypes = { "php" },
-            root_dir = require("lspconfig.util").root_pattern("composer.json", ".git"),
-          },
-        },
-      },
-    },
-  })
-end
-
--- Wright Now php is disabled.
--- Uncomment the last line to use php
--- require M
---
--- require("lspconfig").phpcs.setup({
---   cmd = { "phpcs", "--standard=PEAR", "--exclude=PEAR.Commenting.FileComment.Missing" },
--- })
 local phpcs = require("lint").linters.phpcs
 phpcs.args = {
   "-q",
   "-s",
   "--standard=PEAR",
-  "--exclude=PEAR.Commenting.FunctionComment,PEAR.Commenting.FileComment",
+  "--exclude=PEAR.Commenting.FunctionComment,PEAR.Commenting.FileComment,PEAR.Functions.FunctionCallSignature",
   "--report=json",
   "-",
 }
 return {
   { "prettier/vim-prettier" },
+  {
+    "gbprod/phpactor.nvim",
+    ft = "php",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+      -- If the update/install notification doesn't show properly,
+      -- you should also add here UI plugins like "folke/noice.nvim" or "stevearc/dressing.nvim"
+    },
+    opts = {
+      -- you're options goes here
+    },
+  },
   {
     "stevearc/conform.nvim",
     lazy = true,
