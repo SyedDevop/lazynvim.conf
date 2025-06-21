@@ -10,7 +10,7 @@ return {
           if tag == nil then
             return nil
           end
-          return { left = "<" .. tag .. ">", right = "</" .. tag .. ">" }
+          return { left = "<" .. tag .. ">\n", right = "\n</" .. tag .. ">" }
         end,
       },
     }
