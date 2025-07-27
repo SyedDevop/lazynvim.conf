@@ -1,24 +1,59 @@
 return {
   -- customize file explorer
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   opts = function(_, opts)
+  --     opts.search = {
+  --       command = "rg",
+  --       args = {
+  --         "--color=never",
+  --         "--no-heading",
+  --         "--with-filename",
+  --         "--line-number",
+  --         "--column",
+  --       },
+  --       -- regex that will be used to match keywords.
+  --       -- don't replace the (KEYWORDS) placeholder
+  --       pattern = [[\b(KEYWORDS)\s:|\b(KEYWORDS):]], -- ripgrep regex
+  --       -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+  --     }
+  --   end,
+  -- },
+
   {
-    "folke/todo-comments.nvim",
-    opts = function(_, opts)
-      opts.search = {
-        command = "rg",
-        args = {
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-        },
-        -- regex that will be used to match keywords.
-        -- don't replace the (KEYWORDS) placeholder
-        pattern = [[\b(KEYWORDS)\s:|\b(KEYWORDS):]], -- ripgrep regex
-        -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
-      }
+    "nexcov/compile-mode.nvim",
+    config = function()
+      vim.keymap.set("n", "<leader>cM", function()
+        vim.cmd("CompileMode")
+      end)
     end,
   },
+  -- {
+  --   "ej-shafran/compile-mode.nvim",
+  --   version = "^5.0.0",
+  --   -- you can just use the latest version:
+  --   -- branch = "latest",
+  --   -- or the most up-to-date updates:
+  --   -- branch = "nightly",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     -- if you want to enable coloring of ANSI escape codes in
+  --     -- compilation output, add:
+  --     -- { "m00qek/baleia.nvim", tag = "v1.3.0" },
+  --   },
+  --   config = function()
+  --     ---@type CompileModeOpts
+  --     vim.g.compile_mode = {
+  --       -- to add ANSI escape code support, add:
+  --       -- baleia_setup = true,
+  --
+  --       -- to make `:Compile` replace special characters (e.g. `%`) in
+  --       -- the command (and behave more like `:!`), add:
+  --       -- bang_expansion = true,
+  --     }
+  --   end,
+  -- },
+
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -83,6 +118,22 @@ return {
       }
     end,
   },
+
+  -- Hardtime for To improver vim motions
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      restricted_keys = {
+        ["h"] = {}, -- dont restrict
+        ["j"] = {},
+        ["k"] = {},
+        ["l"] = {},
+      },
+    },
+  },
+
   --Spell Checker
   {
     "lucaSartore/fastspell.nvim",

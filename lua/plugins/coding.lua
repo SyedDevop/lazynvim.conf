@@ -12,13 +12,13 @@ return {
     },
   },
   -- tidy
-  {
-    "mcauley-penney/tidy.nvim",
-    event = "VeryLazy",
-    config = {
-      filetype_exclude = { "markdown", "diff" },
-    },
-  },
+  -- {
+  --   "mcauley-penney/tidy.nvim",
+  --   event = "VeryLazy",
+  --   config = {
+  --     filetype_exclude = { "markdown", "diff", "sh" },
+  --   },
+  -- },
   {
     "wintermute-cell/gitignore.nvim",
     dependencies = {

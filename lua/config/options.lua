@@ -2,6 +2,7 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here asdasd
 
-local opt = vim.opt
+local opt = vim.o
 vim.g.lazyvim_php_lsp = "intelephense"
 opt.spell = true
+opt.winborder = "rounded"
