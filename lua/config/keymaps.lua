@@ -22,9 +22,13 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Keep cursor in center" })
 map("n", "n", "nzzzv", { desc = "Keep cursor in center" })
 map("n", "N", "Nzzzv", { desc = "Keep cursor in center" })
 
+-- Quick Fix Keymaps
+map("n", "<C-n>", ":cnext<cr>", { desc = "Next QuickFix Item" })
+map("n", "<C-p>", ":cprev<cr>", { desc = "Previous QuickFix Item" })
+
 -- Undo Redo Keymaps.
-map({ "n", "i", "v" }, "<C-z>", "<cmd>:u<cr>", { desc = "Undo" })
-map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
+-- map({ "n", "i", "v" }, "<C-z>", "<cmd>:u<cr>", { desc = "Undo" })
+-- map({ "n", "i", "v" }, "<C-y>", "<cmd>:redo<cr>", { desc = "Redo" })
 
 -- Copy Past Keymaps
 -- vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true, silent = true })
@@ -50,31 +54,6 @@ map("n", "<leader>xm", "<Cmd>Mess<CR>", { desc = "Show the messages" })
 map("n", "<tab>", "<Cmd>bnext<Cr>", { desc = "Go to next buffer" })
 map("n", "<S-tab>", "<Cmd>bprev<Cr>", { desc = "Go to previews buffer" })
 
-function _G.run_code()
-  local filename = vim.fn.expand("%")
-  local basename = vim.fn.expand("%:r")
-  local filetype = vim.bo.filetype
-  local cmd = nil
-
-  if filetype == "python" then
-    cmd = "term: python3 " .. filename
-  elseif filetype == "c" then
-    cmd = "term: gcc " .. filename .. " -o " .. basename .. " && ./" .. basename
-  elseif filetype == "cpp" then
-    cmd = "term: g++ " .. filename .. " -o " .. basename .. " && ./" .. basename
-  elseif filetype == "java" then
-    cmd = "term: javac " .. filename .. " && java " .. basename
-  elseif filetype == "go" then
-    cmd = "term: go run " .. filename
-  elseif filetype == "zig" then
-    cmd = "term: zig build run"
-  end
-
-  if cmd then
-    vim.cmd(cmd)
-  else
-    print("Filetype not supported for execution.")
-  end
-end
-
-vim.keymap.set("n", "<leader>r", "<cmd>lua _G.run_code()<cr>", { desc = "Run Code" })
+map({ "n", "v" }, "<leader>m", function()
+  print("TODO: Replace the selected or line of math expiration")
+end, { desc = "Replace the selected or line of math expiration" })
