@@ -96,7 +96,7 @@ return {
 
   --mini.Surround
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = {
         add = "sa", -- Add surrounding in Normal and Visual modes
@@ -111,7 +111,7 @@ return {
   },
   --Disable mini.ai to tags
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     opts = function(_, opts)
       opts.custom_textobjects = {
         t = false, -- fallback to neovim for tags

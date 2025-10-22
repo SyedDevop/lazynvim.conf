@@ -8,6 +8,19 @@ phpcs.args = {
   "-",
 }
 return {
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        superhtml = {
+          filetype = { "html", "shtml", "htm", "php" },
+          cmd = { "superhtml", "lsp" },
+          root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+        },
+      },
+    },
+  },
   { "prettier/vim-prettier" },
   {
     "gbprod/phpactor.nvim",
