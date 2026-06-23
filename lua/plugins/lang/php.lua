@@ -1,12 +1,12 @@
-local phpcs = require("lint").linters.phpcs
-phpcs.args = {
-  "-q",
-  "-s",
-  "--standard=PEAR",
-  "--exclude=PEAR.Commenting.FunctionComment,PEAR.Commenting.FileComment,PEAR.Functions.FunctionCallSignature",
-  "--report=json",
-  "-",
-}
+-- local phpcs = require("lint").linters.phpcs
+-- phpcs.args = {
+--   "-q",
+--   "-s",
+--   "--standard=PEAR",
+--   "--exclude=PEAR.Commenting.FunctionComment,PEAR.Commenting.FileComment,PEAR.Functions.FunctionCallSignature",
+--   "--report=json",
+--   "-",
+-- }
 return {
 
   {
@@ -18,22 +18,71 @@ return {
           cmd = { "superhtml", "lsp" },
           root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
         },
+        intelephense = {
+          enabled = true,
+        },
+        phpactor = {
+          enabled = true,
+          -- init_options = {
+          --   ["language_server.diagnostics_on_update"] = false,
+          --   ["language_server.diagnostics_on_open"] = false,
+          --   ["language_server.diagnostics_on_save"] = false,
+          --   ["language_server_phpstan.enabled"] = false,
+          --   ["language_server_psalm.enabled"] = false,
+          --   ["language_server_php_cs_fixer.enabled"] = false,
+          -- },
+        },
       },
     },
   },
+
   { "prettier/vim-prettier" },
   {
-    "gbprod/phpactor.nvim",
-    ft = "php",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig",
-      -- If the update/install notification doesn't show properly,
-      -- you should also add here UI plugins like "folke/noice.nvim" or "stevearc/dressing.nvim"
-    },
+    "Bleksak/laravel-ide-helper.nvim",
     opts = {
-      -- you're options goes here
+      save_before_write = true,
+      format_after_gen = true,
+      models_args = {},
     },
+    enabled = function()
+      return vim.fn.filereadable("artisan") ~= 0
+    end,
+    keys = {
+      {
+        "<leader>lgm",
+        function()
+          require("laravel-ide-helper").generate_models(vim.fn.expand("%"))
+        end,
+        desc = "Generate Model Info for current model",
+      },
+      {
+        "<leader>lgM",
+        function()
+          require("laravel-ide-helper").generate_models()
+        end,
+        desc = "Generate Model Info for all models",
+      },
+    },
+  },
+  {
+    "adibhanna/laravel.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>la", ":Artisan<cr>", desc = "Laravel Artisan" },
+      { "<leader>lc", ":Composer<cr>", desc = "Composer" },
+      { "<leader>lr", ":LaravelRoute<cr>", desc = "Laravel Routes" },
+      { "<leader>lm", ":LaravelMake<cr>", desc = "Laravel Make" },
+    },
+    config = function()
+      require("laravel").setup({
+        notifications = true, -- Enable/disable Laravel.nvim notifications (default: true)
+        debug = false, -- Enable/disable debug error notifications (default: false)
+        keymaps = true, -- Enable/disable Laravel.nvim keymaps (default: true)
+      })
+    end,
   },
   {
     "stevearc/conform.nvim",
@@ -41,18 +90,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {
       formatters_by_ft = {
-        php = { "php-cs-fixer" },
-      },
-      formatters = {
-        ["php-cs-fixer"] = {
-          command = "php-cs-fixer",
-          args = {
-            "fix",
-            "--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
-            "$FILENAME",
-          },
-          stdin = false,
-        },
+        php = { "pint" },
       },
       notify_on_error = true,
     },

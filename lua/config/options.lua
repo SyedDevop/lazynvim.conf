@@ -6,3 +6,5 @@ local opt = vim.o
 vim.g.lazyvim_php_lsp = "intelephense"
 opt.spell = true
 opt.winborder = "rounded"
+local utils = require("util.utils")
+vim.api.nvim_create_user_command("Huid", utils.insert_huid, {})

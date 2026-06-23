@@ -86,9 +86,9 @@ return {
     opts = {},
   },
   --Flit
+  { url = "https://codeberg.org/andyg/leap.nvim" },
   {
     "ggandor/flit.nvim",
-    dependencies = { "tpope/vim-repeat", "ggandor/leap.nvim" },
     config = function()
       require("flit").setup({})
     end,
@@ -173,7 +173,7 @@ return {
         end,
       })
 
-      vim.api.nvim_set_keymap("n", "<leader>sc", "", {
+      vim.api.nvim_set_keymap("n", "<leader>hc", "", {
         noremap = true,
         silent = true,
         desc = "[S]pell [C]heck",
@@ -184,7 +184,7 @@ return {
           fastspell.sendSpellCheckRequest(first_line, last_line)
         end,
       })
-      vim.api.nvim_set_keymap("n", "<leader>si", "", {
+      vim.api.nvim_set_keymap("n", "<leader>hi", "", {
         noremap = true,
         silent = true,
         desc = "Remove spell check for buffer",

@@ -1,7 +1,15 @@
-local zls_bin = vim.fn.expand("~/.local/bin/zls")
-local util = require("lspconfig.util")
-
-return {
+local bin_path = vim.fn.expand("~/.local/bin")
+local zig_version_list = {
+  "zig 0.13.0",
+  "zig 0.14.1",
+  "zig 0.15.2",
+}
+local zls_bin_list = {
+  bin_path .. "/zls-13",
+  bin_path .. "/zls-14",
+  bin_path .. "/zls-15",
+}
+M = {
   recommended = function()
     return LazyVim.extras.wants({
       ft = { "zig", "zir" },
@@ -11,31 +19,23 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = { ensure_installed = { "zig" } },
+    config = function(_, _) end,
   },
   {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
         zls = {
+          mason = false,
           filetypes = { "zig" },
           -- adjust root_dir as needed for your projects:
-          root_dir = require("lspconfig.util").root_pattern("build.zig", ".git"),
-          on_new_config = function(new_config, root_dir)
-            local tv_file = root_dir .. "/.tool-versions"
-            if vim.fn.filereadable(tv_file) == 1 then
-              local lines = vim.fn.readfile(tv_file)
-              for _, l in ipairs(lines) do
-                if l:match("^%s*zig%s+0[.]13[.]0%s*$") then
-                  new_config.cmd = { zls_bin }
-                  return
-                end
-              end
-            end
-            -- fallback to whatever’s on your $PATH (or Mason-managed):
-            new_config.cmd = { "zls" }
+          -- root_dir = vim.lsp.config,
+          on_new_config = function(new_config)
+            new_config.cmd = { vim.fn.exepath("zls") or "zls" }
           end,
         },
       },
     },
   },
 }
+return M
