@@ -1,14 +1,3 @@
-local bin_path = vim.fn.expand("~/.local/bin")
-local zig_version_list = {
-  "zig 0.13.0",
-  "zig 0.14.1",
-  "zig 0.15.2",
-}
-local zls_bin_list = {
-  bin_path .. "/zls-13",
-  bin_path .. "/zls-14",
-  bin_path .. "/zls-15",
-}
 M = {
   recommended = function()
     return LazyVim.extras.wants({
